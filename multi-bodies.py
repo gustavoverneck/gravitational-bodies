@@ -27,8 +27,8 @@ class Mass:
 		self.Fy = self.m * P.m * (self.y - P.y)/R
 		
 	def show(self):
-		ax.plot(self.x, self.y, 'ob', markersize=3)
-	
+		ax.plot(self.x, self.y, 'or', markersize=4)
+
 def animate(U):
 	global particulas
 	ax.clear()
@@ -48,8 +48,8 @@ fig, ax = plt.subplots()
 particulas = []
 
 particulas = []
-for i in range(100):
-	particulas.append(Mass(random.uniform(0,10), random.uniform(-50, 50), random.uniform(-50, 50), random.uniform(-5, 5), random.uniform(-5, 5)))
+for i in range(200):
+	particulas.append(Mass(random.uniform(0,10), random.uniform(-50, 50), random.uniform(-50, 50), random.uniform(-10, 10), random.uniform(-10, 10)))
 
 ani = animation.FuncAnimation(fig, animate, 100, interval = 1, repeat= True)
 plt.show()
