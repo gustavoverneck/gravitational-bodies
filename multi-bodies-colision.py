@@ -5,7 +5,7 @@
 	
 	IDEIA FUTURA: EVOLUIR O SISTEMA TEMPORALMENTE ATRAVÉS DE UM POTENCIAL MÉDIO QUE TAMBÉM VARIA COM O TEMPO
 
-	BUGS: PARECE ESTAR CRIANDO A PARTÍCULAS 2X APÓS COLISÃO - OU TENTAR CONRRIGIR OU SÓ DIVIDIR A MASSA POR 2
+	BUGS: PARECE ESTAR CRIANDO AS PARTÍCULAS 2X APÓS COLISÃO - OU TENTAR CONRRIGIR OU SÓ DIVIDIR A MASSA POR 2
 
 '''
 
@@ -17,13 +17,13 @@ import random as random
 import numpy as np
 
 
-dt = 0.01
+dt = 0.1
 space_size = 500
 n_particles = 100
 mass_interval = 50
 speed_interval = 30
 G = 1
-total_time = 10
+total_time = 1000
 total_frames = int(total_time/dt)
 global_time = 0
 
@@ -51,7 +51,7 @@ class Mass:
 	def force(self, P, q):
 		R = (np.sqrt((q.x - P.x)**2 + (q.y - P.y)**2))
 		bateu = False
-		if R < 2:
+		if R < self.m/5:
 			self.colision(P, q)
 			bateu = True
 		if R > 0 and not bateu:
@@ -59,7 +59,7 @@ class Mass:
 			self.Fy = G*self.m * P.m * (self.y - P.y)/R**2
 		
 	def show(self):
-		ax.plot(self.x, self.y, 'ob', markersize=4)
+		ax.plot(self.x, self.y, 'ob', markersize=int(self.m/5))
 
 	def colision(self, P, q):
 		global particulas
