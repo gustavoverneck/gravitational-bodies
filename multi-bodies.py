@@ -14,10 +14,10 @@ class Mass:
 		print("Particula criada: ", "massa: ",self.m, "; (",self.x,",",self.y,")", " ; v: (", self.vx, ",", self.vy, ")")
 	
 	def move(self):
+		self.x += self.vx*dt + (0.5*(self.Fx / self.m)*dt*dt)
+		self.y += self.vy*dt + (0.5*(self.Fx / self.m)*dt*dt)
 		self.vx += self.Fx / self.m * dt
 		self.vy += self.Fy / self.m * dt
-		self.x += self.vx*dt
-		self.y += self.vy*dt
 		self.Fx = 0
 		self.Fy = 0
 

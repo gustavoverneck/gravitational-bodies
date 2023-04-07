@@ -1,11 +1,5 @@
 '''
 	SIMULADOR DE N-CORPOS INTERAGENTES GRAVITACIONALMENTE: "FORMAÇÃO DE ESTRELAS"
-	
-	PROBLEMAS: TEMPO COMPUTACIONAL E ERROS PELO MÉTODO DE EULER
-	
-	IDEIA FUTURA: EVOLUIR O SISTEMA TEMPORALMENTE ATRAVÉS DE UM POTENCIAL MÉDIO QUE TAMBÉM VARIA COM O TEMPO
-
-	BUGS: PARECE ESTAR CRIANDO AS PARTÍCULAS 2X APÓS COLISÃO - OU TENTAR CONRRIGIR OU SÓ DIVIDIR A MASSA POR 2
 
 '''
 
@@ -40,10 +34,10 @@ class Mass:
 		print("tempo: ", global_time, " ; Particula criada: ", "massa: ",self.m, "; (",self.x,",",self.y,")", " ; v: (", self.vx, ",", self.vy, ")")
 	
 	def move(self):
+		self.x += self.vx*dt + (0.5*(self.Fx / self.m)*dt*dt)
+		self.y += self.vy*dt + (0.5*(self.Fx / self.m)*dt*dt)
 		self.vx += self.Fx / self.m * dt
 		self.vy += self.Fy / self.m * dt
-		self.x += self.vx*dt
-		self.y += self.vy*dt
 		self.Fx = 0
 		self.Fy = 0
 
